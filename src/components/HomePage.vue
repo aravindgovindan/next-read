@@ -1,10 +1,10 @@
 <template>
   <div class="home">
-    <h1 class="title" align="center">Next Book</h1>
+    <h1 class="title" align="center">My Next Read</h1>
     <div class="form-group" align="center">
       <input class="form-control" v-model="bookTitle" placeholder="Enter a book title" />
       <br>
-      <button class="btn btn-primary" @click="submitPrompt">Show next read</button>
+      <button class="btn btn-primary" @click="submitPrompt">Show my next read</button>
     </div>
     <div v-if="recommendation">
       <p>{{ recommendation }}</p>
@@ -41,7 +41,7 @@ A. `
         }, {
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer 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`,
+            'Authorization': `Bearer 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`,
           }
         })
         this.recommendation = response.data.choices[0].text.split('\n')[0]
