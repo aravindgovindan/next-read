@@ -6,7 +6,9 @@
       <br>
       <button class="btn btn-primary" @click="submitPrompt">Show my next read</button>
     </div>
-    <div v-if="recommendation">
+    <div class="alert" v-if="error">{{ error }}</div>
+    <div class="recommendation" v-if="recommendation">
+      <h3>Recommended Book</h3>
       <p>{{ recommendation }}</p>
     </div>
   </div>
@@ -20,7 +22,8 @@ export default {
   data() {
     return {
       bookTitle: "",
-      recommendation: ""
+      recommendation: "",
+      error: ""
     }
   },
   methods: {
@@ -34,6 +37,10 @@ Q. I liked reading ${this.bookTitle}. What should I read next?
 A. `
     },
     async submitPrompt() {
+      if (this.bookTitle === '') {
+        this.error = 'Please enter a book title';
+        return;
+      }
       try {
         const response = await axios.post('https://api.openai.com/v1/engines/babbage/completions', {
           temperature: 0,
@@ -45,6 +52,7 @@ A. `
           }
         })
         this.recommendation = response.data.choices[0].text.split('\n')[0]
+        this.error = ""
       } catch (error) {
         console.log(error)
       }
