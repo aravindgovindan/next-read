@@ -1,4 +1,4 @@
-# [Next Book](next-book.netlify.app)
+# [Next Book](https://next-read.netlify.app/)
 
 A simple Vue.js web app that suggests books similar to the one you're currently reading. Simply enter the title of the book you're reading and click "Show my next read" button to get a recommendation.
 
