@@ -41,7 +41,7 @@ A. `
         }, {
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer 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`,
+            'Authorization': `Bearer ${process.env.VUE_APP_API_KEY}`,
           }
         })
         this.recommendation = response.data.choices[0].text.split('\n')[0]
